@@ -1,23 +1,35 @@
-    1 Créer le tournoi
-    2 Créer les 8 joueurs
-    3 Créer un round
-    4 Définir les matchs pour le round (qui contre qui)
-    5 Afficher les matchs
-    6 Demander qui est le gagnant
-    7 Afficher les résultats
+# Gestion de tournois d'échec
+Projet 4 de la formation DA python d'Openclassrooms.
 
-    8 Créer les autres round mais cette fois si selon leurs classements
-    9 Afficher les matchs
-    10 Demander qui est le gagnant
-    11 Afficher les résultats
+Application permettant la gestion de tournois d'échecs( joueurs , rounds et matchs, scores) 
 
 
 
+# Installation :
 
+### **_Cloner le référentiel :_**
+git clone `https://github.com/boukaii/p4-tournoi_echecs.git`
 
-MENU 
-- nouveau tournoi
-- reprendre un tournoi
-- rapport
-- quitter
+###  **_Déplacer vers le nouveau dossier :_**
+`cd pythonProject1`
 
+### **_Créez l'environnement virtuel :_**
+`python -m venv env`
+
+### _**Activez l'environnement virtuel :**_
+Pour macOS et Linux: `env/bin/activate`
+
+Pour Windows: `env\Scripts\activate`
+
+### **_Installez les packages :_**
+`pip install -r requirements.txt`
+
+## **_Générer un rapport HTML Flake 8 :_**
+
+### Installer le package :
+
+`pip install flake8-html`
+
+### Tapez ensuite cette ligne de commande et un rapport complet sera généré :
+
+`flake8 --format=html --htmldir=flake8_report`
