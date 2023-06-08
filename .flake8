@@ -1,0 +1,8 @@
+[flake8]
+max-line-length = 119
+
+exclude=
+    venv/,
+    notes.txt,
+    README.md,
+    requirements.txt,
