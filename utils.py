@@ -1,5 +1,5 @@
 from tinydb import TinyDB
-from model1 import Tournament
+from model import Tournament
 
 
 def load_current_tournament():

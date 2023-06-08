@@ -1,4 +1,4 @@
-from controller1 import MenuManagement
+from controller import MenuManagement
 
 
 if __name__ == "__main__":

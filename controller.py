@@ -1,5 +1,5 @@
-from model1 import Tournament, Match, Round, Player
-from view1 import ViewMenu, ViewPlayers, ViewTournament, ViewResults, ViewReports
+from model import Tournament, Match, Round, Player
+from view import ViewMenu, ViewPlayers, ViewTournament, ViewResults, ViewReports
 from utils import load_current_tournament
 
 
