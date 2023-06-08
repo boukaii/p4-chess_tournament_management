@@ -117,3 +117,20 @@ class ViewReports:
     #     for tournament in tournaments:
     #         print(f"{tournament}\n")
     #
+    @staticmethod
+    def list_players(players):
+        """Liste des joueurs dans la views player"""
+        for player in players:
+            print(
+                player["classement"] + " " + player["first_name"] + " " + player["last_name"]
+            )
+
+    @staticmethod
+    def print_report_players_and_elo(players):
+        print("xoxo")
+        print(players)
+        for player in players:
+            print("xixi")
+            print(
+                f"{player['last_name']} {player['first_name']} : elo = {player['last_name']} {player['elo']}"
+            )

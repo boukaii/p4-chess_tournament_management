@@ -1,6 +1,7 @@
 from model import Tournament, Match, Round, Player
 from view import ViewMenu, ViewPlayers, ViewTournament, ViewResults, ViewReports
 from utils import load_current_tournament
+from tinydb import TinyDB, Query
 
 
 class TournamentManagement:
@@ -86,10 +87,34 @@ class TournamentManagement:
             match.player2.score += 0.5
 
 
+class Report:
+
+    Viewreport = ViewReports
+
+    def menu_report(self):
+        choice = 1
+        print("#" * 28 + " " + "Bienvenue dans le menu des rapports " + " " + "#" * 28)
+        while choice != 0:
+            choice = int(ViewReports.report_menu())
+            # choix 1 pour afficher les joueurs apar ordre alphabétique
+            if choice == 1:
+                self.get_alphabetic_actors()
+            elif choice == 2:
+                pass
+            elif choice == 3:
+                pass
+
+    def get_alphabetic_actors(self, players):
+        players = sorted(players, key=lambda x: x.get('last_name'))
+        self.Viewreport.print_report_players_and_elo(players)
+        print(players)
+
+
 class MenuManagement:
     tournament1 = TournamentManagement()
     test = ViewTournament
     test1 = ViewReports
+    test2 = Report()
 
     def main_menu(self):
         choice = 1
@@ -101,7 +126,7 @@ class MenuManagement:
             elif choice == 2:
                 self.tournament1.start_tournament()
             elif choice == 3:
-                pass
+                self.test2.menu_report()
 
 
 
