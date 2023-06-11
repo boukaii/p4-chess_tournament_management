@@ -44,7 +44,7 @@ class TournamentManagement:
         for i in range(self.tournament.nb_tour - len(self.tournament.rounds)):
             round_ = Round("round #" + str(i + 1))
             self.tournament.add_round(round_)
-            # print(round_.name)
+            self.view_results_global.view_round(round_.name)
         # Divise notre liste de joueur par deux et on trie notre liste de joueur par rang(range définie a 0)
             list_player = sorted(self.tournament.players, key=lambda x: x.score, reverse=True)
             matchs = list()

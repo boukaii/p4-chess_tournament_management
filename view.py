@@ -84,6 +84,13 @@ class ViewResults:
         )
         return user_input
 
+    @classmethod
+    def view_round(cls, round_):
+        print(round_)
+
+
+
+
 
 class ViewReports:
 
@@ -136,3 +143,5 @@ class ViewReports:
     # @staticmethod
     # def list_players1(player):
     #     print(player)
+
+

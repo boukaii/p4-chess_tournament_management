@@ -1,4 +1,6 @@
-from tinydb import TinyDB
+from tinydb import TinyDB, Query
+from view import ViewReports
+from datetime import datetime
 
 
 class Player:
@@ -26,6 +28,7 @@ class Player:
     @classmethod
     def deserialize(cls, data):
         player = cls(data["last_name"], data["first_name"], data["date_birth"], data["gender"], data["score"])
+        # ViewReports.list_players1(player)
         return player
 
 
