@@ -96,6 +96,7 @@ class ViewReports:
             Taper '3' Pour voir la liste de tout les tournois
             """)
         return choice
+    
     @staticmethod
     def display_player(list_player):
         for player in list_player:
@@ -104,33 +105,34 @@ class ViewReports:
         print("Appuyer sur une touche pour revenir au menu rapport")
         input()
 
-    # def display_player_ranking(self, players_list):
-    #     for player in players_list:
-    #         print(f"Classement :{player.score} - {player.last_name}"
-    #               f" {player.first_name} - {player.date_birth} - {player.gender}")
-    #     print("Appuyer sur une touche pour revenir au menu rapport")
-    #     input()
-    #
-    # def display_tournament(self, tournament):
-    #     print("--------------------------------------------------\n")
-    #     print("Tapez le tournoi:\n")
-    #     for tournament in tournaments:
-    #         print(f"{tournament}\n")
-    #
-    @staticmethod
-    def list_players(players):
-        """Liste des joueurs dans la views player"""
-        for player in players:
-            print(
-                player["classement"] + " " + player["first_name"] + " " + player["last_name"]
-            )
+    def display_player_ranking(self, players_list):
+        for player in players_list:
+            print(f"Classement :{player.score} - {player.last_name}"
+                  f" {player.first_name} - {player.date_birth} - {player.gender}")
+        print("Appuyer sur une touche pour revenir au menu rapport")
+        input()
+
+    def display_tournament(self, tournaments):
+        print("--------------------------------------------------\n")
+        print("Tapez le tournoi:\n")
+        for tournament in tournaments:
+            print(f"{tournament}\n")
 
     @staticmethod
-    def print_report_players_and_elo(players):
-        print("xoxo")
-        print(players)
-        for player in players:
-            print("xixi")
+    def list_players(player):
+        """Liste des joueurs dans la views player"""
+        for player1 in player:
             print(
-                f"{player['last_name']} {player['first_name']} : elo = {player['last_name']} {player['elo']}"
+                player1["classement"] + "toto" + player1["first_name"] + "titi" + player1["last_name"]
+
             )
+    #
+    # def print_report_players(players):
+    #     for player in players:
+    #         print(
+    #             f"{player['last_name']} {player['first_name']} : elo = {player['last_name']}"
+    #         )
+    #
+    # @staticmethod
+    # def list_players1(player):
+    #     print(player)
