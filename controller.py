@@ -1,6 +1,6 @@
 from model import Tournament, Match, Round, Player
 from view import ViewMenu, ViewPlayers, ViewTournament, ViewResults, ViewReports
-from utils import load_current_tournament
+from utils import load_current_tournament, load_tournaments, load_players
 
 
 class TournamentManagement:
@@ -96,23 +96,24 @@ class Report:
                 self.report_player_name()
             # choix 2 pour afficher les joueurs par classement
             elif choice == 2:
-                pass
+                self.report_player_score()
             # choix 2 pour afficher les joueurs par classement
             elif choice == 3:
-                pass
+                self.report_tournament()
 
     def report_player_name(self):
-        retrieve_tournament = load_current_tournament()
-        print("ooo")
-        retrieve_tournament = sorted(retrieve_tournament["current"]["1"]["players"], key=lambda x: x.get('last_name'))
-        print("aaa")
-        self.view_reports_global.list_players(retrieve_tournament)
+        players = load_players()
+        players.sort(key=lambda x: x.last_name)
+        self.view_reports_global.display_player(players)
 
     def report_player_score(self):
-        pass
+        players = load_players()
+        players.sort(key=lambda x: x.score)
+        self.view_reports_global.display_player_ranking(players)
 
     def report_tournament(self):
-        pass
+        tournaments = load_tournaments()
+        self.view_reports_global.display_tournament(tournaments)
 
 
 class MenuManagement:
