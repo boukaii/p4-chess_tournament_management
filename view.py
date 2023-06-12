@@ -1,3 +1,6 @@
+from pprint import pprint
+
+
 class ViewMenu:
 
     @classmethod
@@ -86,7 +89,20 @@ class ViewResults:
 
     @classmethod
     def view_round(cls, round_):
+        print()
         print(round_)
+        print()
+
+    @classmethod
+    def score_total(cls, match):
+        print("Score total des joueurs du Match")
+        print(str(f"Player 1 : {match.player1}, {match.score_player1}"))
+        print(str(f"Player 2 : {match.player2}, {match.score_player2}"))
+
+    @classmethod
+    def score_tournament(cls, ):
+        print("tournois terminé, voici la liste des scores de tout les participants")
+        print()
 
 
 class ViewReports:
@@ -100,7 +116,7 @@ class ViewReports:
             Taper '3' Pour voir la liste de tout les tournois
             """)
         return choice
-    
+
     @staticmethod
     def display_player(list_player):
         for player in list_player:
@@ -121,7 +137,11 @@ class ViewReports:
     def display_tournament(tournaments):
         print("Infos sur les tournois")
         for tournament in tournaments:
-            print(f""
-                  f"{tournament.name} - {tournament.place}")
 
-
+            #
+            # print({tournament.name}, {tournament.place}, {tournament.date}, {tournament.description}, {tournament.nb_tour}, {tournament.nb_players})
+            # print("blabla : {}".format(tournament.players))
+            print(str(f"Player 1 : {tournament.rounds}, {tournament.name}, {tournament.place},"
+                      f" {tournament.date}, {tournament.nb_tour}, {tournament.description},"
+                      f" {tournament.nb_players},{tournament.players}"))
+            # print("NB_Player : {}".format(tournament.players))
