@@ -17,7 +17,8 @@ class TournamentManagement:
         current_tournament = load_current_tournament()
         if not current_tournament:
             name, place, date, description, nb_tour, nb_players = self.view_tournament_global.tournament_input()
-            self.tournament = Tournament(name=name, place=place, date=date, description=description, nb_tour=nb_tour, nb_players=nb_players)
+            self.tournament = Tournament(name=name, place=place, date=date,
+                                         description=description, nb_tour=nb_tour, nb_players=nb_players)
             self.view_tournament_global.view_tournament_info(self.tournament)
             self.start_type_tournament()
             self.tournament.save()
@@ -53,14 +54,11 @@ class TournamentManagement:
                 player2 = list_player[ia + 1]
                 match = ([player1, 0], [player2, 0])
                 matchs.append(match)
-                # print("*" * 30)
-                # print(match)
                 round_.add_match(Match(player1, player2))
-                # print("*" * 100)
             for match in round_.matchs:
-                # print(match)
                 user_input = self.result_score(match)
                 self.choice_result(match, user_input)
+                self.view_results_global.score_total(match)
                 self.tournament.save()
 
     def result_score(self, match):
@@ -131,7 +129,3 @@ class MenuManagement:
                 self.tournament.start_tournament()
             elif choice == 3:
                 self.report_menu.menu_report()
-
-
-
-# input("\nAppuyer sur n'importe quel touche pour revenir au menu:")
