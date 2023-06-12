@@ -26,7 +26,7 @@ class Player:
     @classmethod
     def deserialize(cls, data):
         player = cls(data["last_name"], data["first_name"], data["date_birth"], data["gender"], data["score"])
-        return player
+        return str(player)
 
 
 class Tournament:
@@ -62,7 +62,8 @@ class Tournament:
 
     @classmethod
     def deserialize(cls, data):
-        tournament = cls(data['name'], data['place'], data['date'], data['description'], data['nb_tour'], data['nb_players'])
+        tournament = cls(data['name'], data['place'], data['date'], data['description'],
+                         data['nb_tour'], data['nb_players'])
         for players_data in data["players"]:
             tournament.add_player(Player.deserialize(players_data))
         for rounds_data in data["rounds"]:
@@ -83,6 +84,9 @@ class Round:
         self.name = name
         self.matchs = []
 
+    def __str__(self):
+        return f"{self.name} {self.matchs}"
+
     def add_match(self, match):
         self.matchs.append(match)
 
@@ -98,7 +102,7 @@ class Round:
         round = cls(data["name"])
         for match_data in data["matchs"]:
             round.add_match(Match.deserialize(match_data))
-        return round
+        return str(round)
 
 
 class Match:
@@ -107,6 +111,9 @@ class Match:
         self.player2 = player2
         self.score_player1 = score_player1
         self.score_player2 = score_player2
+
+    def __str__(self):
+        return f"{self.player1} {self.player2}"
 
     def serialize(self):
         data = {
@@ -122,4 +129,4 @@ class Match:
         player1 = Player.deserialize(data["player1"])
         player2 = Player.deserialize(data["player2"])
         match = cls(player1, player2, data["score_player1"], data["score_player2"])
-        return match
+        return str(match)
