@@ -19,6 +19,7 @@ class TournamentManagement:
             name, place, date, description, nb_tour, nb_players = self.view_tournament_global.tournament_input()
             self.tournament = Tournament(name=name, place=place, date=date,
                                          description=description, nb_tour=nb_tour, nb_players=nb_players)
+
             self.view_tournament_global.view_tournament_info(self.tournament)
             self.start_type_tournament()
             self.tournament.save()
@@ -64,6 +65,7 @@ class TournamentManagement:
     def result_score(self, match):
         user_input = self.view_results_global.score_match(match)
         while user_input not in ["1", "2", "3"]:
+            self.view_results_global.input_error()
             user_input = self.view_results_global.score_match(match)
         return user_input
 
@@ -74,7 +76,7 @@ class TournamentManagement:
         elif user_input == "2":
             match.score_player2 = 1
             match.player2.score += 1
-        else:
+        elif user_input == "3":
             match.score_player1 = 0.5
             match.player1.score += 0.5
             match.score_player2 = 0.5
@@ -126,8 +128,6 @@ class MenuManagement:
             if choice == 1:
                 self.tournament.start_tournament()
             elif choice == 2:
-                self.tournament.start_tournament()
-            elif choice == 3:
                 self.report_menu.menu_report()
-            else:
+            elif choice == 3:
                 exit()

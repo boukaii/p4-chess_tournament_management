@@ -1,13 +1,11 @@
 class ViewMenu:
-
     @classmethod
     def starting_menu(cls):
         print("Que voulez-vous faire ? ")
         choice = input("""
-            Taper '1' Pour créer et commencer un nouveau tournoi
-            Taper '2' Pour reprendre le tournoi
-            Taper '3' Pour accéder aux rapports
-            Taper '4' Pour quitter
+            Taper '1' Pour créer et commencer un nouveau tournoi ou reprendre un tournoi déja commencé
+            Taper '2' Pour accéder aux rapports
+            Taper '3' Pour quitter
             """)
         return choice
 
@@ -18,11 +16,33 @@ class ViewTournament:
     def tournament_input(cls):
         name = input("Quel sera le nom du nouveau tournoi ?")
         place = input("A quel endroit ?")
-        date = input("A quel date ? ")
-        nb_tour = int(input("le nombre de tour est définie par défault sur 4, voulez-vous modifier ?"))
-        nb_players = int(input("le nombre de joueurs est définie par défault sur 8, voulez-vous modifier ?"))
         description = input("Description du tournoi :")
+        while True:
+            try:
+                date = int(input("A quel date ? "))
+                break
+            except:
+                print("Veuillez a entrer un nombre pour la date")
+                pass
+        while True:
+            try:
+                nb_tour = int(input("le nombre de tour est définie par défault sur 4, voulez-vous modifier ?"))
+                break
+            except:
+                print("Veuillez a entrer un nombre pour définir le nb_tour")
+                pass
+        while True:
+            try:
+                nb_players = int(input("le nombre de joueurs est définie par défault sur 8, voulez-vous modifier ?"))
+                break
+            except:
+                print("Veuillez a entrer un nombre pour définir le nb_players")
+                pass
         return name, place, date, description, nb_tour, nb_players
+
+    @classmethod
+    def input_error(cls):
+        print("\nInput error, veuillez entrer un choix valide.")
 
     @classmethod
     def type_tournament(cls):
@@ -32,7 +52,16 @@ class ViewTournament:
         print("tapez 1 pour le mode Bullet")
         print("tapez 2 pour le mode Blitz")
         print("tapez 3 pour le mode Speed")
-        return int(input("Quel mode avez-vous choisi ?"))
+        user_input = input()
+        if user_input == "1":
+            return "Bullet"
+        elif user_input == "2":
+            return "Blitz"
+        elif user_input == "3":
+            return "Speed"
+        else:
+            cls.input_error()
+            cls.type_tournament()
 
     @classmethod
     def view_tournament_info(cls, tournament):
@@ -84,6 +113,10 @@ class ViewResults:
         )
         return user_input
 
+    @staticmethod
+    def input_error():
+        print("\nInput error, veuillez entrer un choix valide.")
+
     @classmethod
     def view_round(cls, round_):
         print()
@@ -95,11 +128,6 @@ class ViewResults:
         print("Score total des joueurs du Match")
         print(str(f"Player 1 : {match.player1}, {match.score_player1}"))
         print(str(f"Player 2 : {match.player2}, {match.score_player2}"))
-
-    @classmethod
-    def score_tournament(cls, ):
-        print("tournois terminé, voici la liste des scores de tout les participants")
-        print()
 
 
 class ViewReports:
@@ -137,3 +165,6 @@ class ViewReports:
             print(str(f"Voici les infos de tout les tournois : {tournament.name}, {tournament.place},"
                       f" {tournament.date}, {tournament.nb_tour}, {tournament.description},"
                       f" {tournament.nb_players}, {tournament.rounds}, {tournament.players}"))
+
+
+
