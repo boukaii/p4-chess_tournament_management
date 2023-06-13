@@ -129,3 +129,5 @@ class MenuManagement:
                 self.tournament.start_tournament()
             elif choice == 3:
                 self.report_menu.menu_report()
+            else:
+                exit()
