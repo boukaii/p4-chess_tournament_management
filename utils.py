@@ -28,4 +28,4 @@ def load_players():
     players = []
     for tournament in tournaments:
         players += tournament.players
-    return str(players)
+    return players

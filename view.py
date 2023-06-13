@@ -1,6 +1,3 @@
-from pprint import pprint
-
-
 class ViewMenu:
 
     @classmethod
@@ -137,11 +134,6 @@ class ViewReports:
     def display_tournament(tournaments):
         print("Infos sur les tournois")
         for tournament in tournaments:
-
-            #
-            # print({tournament.name}, {tournament.place}, {tournament.date}, {tournament.description}, {tournament.nb_tour}, {tournament.nb_players})
-            # print("blabla : {}".format(tournament.players))
-            print(str(f"Player 1 : {tournament.rounds}, {tournament.name}, {tournament.place},"
+            print(str(f"Voici les infos de tout les tournois : {tournament.name}, {tournament.place},"
                       f" {tournament.date}, {tournament.nb_tour}, {tournament.description},"
-                      f" {tournament.nb_players},{tournament.players}"))
-            # print("NB_Player : {}".format(tournament.players))
+                      f" {tournament.nb_players}, {tournament.rounds}, {tournament.players}"))

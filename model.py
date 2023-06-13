@@ -26,7 +26,7 @@ class Player:
     @classmethod
     def deserialize(cls, data):
         player = cls(data["last_name"], data["first_name"], data["date_birth"], data["gender"], data["score"])
-        return str(player)
+        return player
 
 
 class Tournament:
@@ -113,7 +113,7 @@ class Match:
         self.score_player2 = score_player2
 
     def __str__(self):
-        return f"{self.player1} {self.player2}"
+        return f"{self.player1} {self.score_player1} {self.player2} {self.score_player2}"
 
     def serialize(self):
         data = {
@@ -126,7 +126,7 @@ class Match:
 
     @classmethod
     def deserialize(cls, data):
-        player1 = Player.deserialize(data["player1"])
-        player2 = Player.deserialize(data["player2"])
+        player1 = str(Player.deserialize(data["player1"]))
+        player2 = str(Player.deserialize(data["player2"]))
         match = cls(player1, player2, data["score_player1"], data["score_player2"])
         return str(match)
